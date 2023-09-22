@@ -139,32 +139,64 @@ driver.get("http://www.youtube.com")
 
 time.sleep(3)
 
-##p='//*[@id="search-form"]'
-##e=driver.find_element('xpath',p)
-##e.click()
-##
-##time.sleep(3)
-
-p='//*[@id="search-form"]'
+p='//input[@id="search"]'
 e=driver.find_element('xpath',p)
 e.send_keys('스포티비')
 
 time.sleep(3)
-##
-##p='//*[@id="search-icon-legacy"]'
-##e=driver.find_element('xpath',p)
-##e.click()
+
+#p='//*[@id="search-icon-legacy"]'
+#e=driver.find_element('xpath',p)
+#e.click()
+
+from selenium.webdriver.common.keys import Keys
+e.send_keys(Keys.RETURN)
+
+time.sleep(3)
+
+driver2=webdriver.Chrome(service=s)
+
+p1='//a[@id="thumbnail"]'
+elements=driver2.find_elements('xpath',p)
+print(elements[2].get_attribute('href'))
+driver2.get(elements[2].get_attribute('href'))
 
 
+##학교종이
 
+'''
+from selenium import webdriver
 
+from selenium.webdriver.chrome.service import Service
+from subprocess import CREATE_NO_WINDOW
 
+s=Service()
+s.creation_flags=CREATE_NO_WINDOW
 
+import time
 
+driver=webdriver.Chrome(service=s)
+driver.get("https://schoolbell-e.com/ko/main/home")
 
+p='/html/body/schoolbelle-root/div/app-gate/app-gate-home/div[1]/div[3]/div[1]/div/button[1]'
+e=driver.find_element('xpath',p)
+e.click()
 
+p='/html/body/schoolbelle-root/div/app-gate/app-gate-login/div/div[1]/div/form/div[1]/div/phone-number-input/div/input'
+e=driver.find_element('xpath',p)
+e.send_keys('01043617176')
 
+p='/html/body/schoolbelle-root/div/app-gate/app-gate-login/div/div[1]/div/form/div[2]/div/input'
+e=driver.find_element('xpath',p)
+e.send_keys('ok**0315')
 
+p='/html/body/schoolbelle-root/div/app-gate/app-gate-login/div/div[1]/div/form/div[3]/button'
+e=driver.find_element('xpath',p)
+e.click()
 
+time.sleep(3)
 
-
+p='/html/body/app-root/app-main/div[1]/app-main-home/div[2]/div[1]/div[1]/app-my-group-slides/div/ngu-carousel/div/div[1]/div/ngu-tile[1]/div/div[1]/div/div[1]'
+e=driver.find_element('xpath',p)
+e.click()
+'''
